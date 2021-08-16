@@ -40,6 +40,11 @@ footer{
     padding-right: 1rem;
 }
 
+.logoFont{
+    font-family: 'Sacramento',
+    cursive;
+}
+
 footer .social>a{
 color: var(--primary-color);
 opacity: .75;
