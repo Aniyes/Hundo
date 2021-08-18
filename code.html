@@ -59,9 +59,85 @@
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        //Call Hello World
-                        function HelloWorld() {
-                            alert("Hello World");
+                        
+
+
+//get the values from the page
+//starts or controller function
+function getValues() {
+        //get values from the page
+        let startValue = document.getElementById("startValue").value;
+        let endValue = document.getElementById("endValue").value;
+        
+        
+
+        //we need to Validate our input
+        //parse into Integers
+        startValue = parseInt(startValue);
+        endValue = parseInt(endValue);
+
+        if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+
+                 //we call generateNumbers
+               numbers = generateNumbers(startValue, endValue);
+                //we call displayNumbers
+                  displayNumbers(numbers);
+        } else {
+                alert("You must enter integers");
+        }
+    
+
+
+    
+       
+
+    
+}
+
+//generate numbers from startValue to the endValue
+//logic function(s)
+function generateNumbers(sValue, eValue) {
+
+        let numbers = [];
+
+        //we want to get all numbers from the start to end
+        for (let index = sValue; index <= eValue; index++) {
+
+                //this will execute in a loop until index = eValue
+                numbers.push(index);
+                
+        }
+
+        return numbers;
+    
+}
+
+
+//display the numbers and mark even numbers bold
+//display or view functions
+function displayNumbers(numbers) {
+
+
+        let templateRows = "";
+        
+        for (let index = 0; index < numbers.length; index++) {
+                let className = "even";
+                let number = numbers[index];
+                if (number % 2 == 0) {
+                        className = "even";
+                        
+
+                } else {
+                        className = "odd";
+                        
+                }
+                //This does not render correctly with Prism. See the source
+                templateRows += `<tr><td class="${className}"> ${number} </td></tr>`;
+                
+        }
+
+        document.getElementById("results").innerHTML = templateRows;
+}
 }
                     </code>
                 </pre>
@@ -69,8 +145,23 @@
                 </div>
                 <div class="col-lg-4">
                     <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of 'Hello World".</p>
+                    <h5>getValues()</h5>
+                    <p>This fuction is used to get the initial starting and ending values for the application. 
+                        Validation is utilized by parsing values into integers prior to calling the next function generateNumbers().</p>
+                    <br>
+                    <h5>generateNumbers</h5>
+                    <p>
+                        Logic function that initializes and utilizes the variable numbers as an array 
+                        and utilizes a for loop to push the vales to the function displayNumbers.
+
+                    </p>
+                    <br>
+                    <h5>displayNumbers</h5>
+                    <p>
+                        Initilizes the variable templateRows and uses a for loop with a conditional if statement
+                        to validate whether or not a number is even or odd. Even numbers receive the condition of becoming
+                        bold via css stylesheet.
+                    </p>
 
                 </div>
             </div>
